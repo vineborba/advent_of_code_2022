@@ -86,13 +86,11 @@ fn main() {
     assert!(lines.next().unwrap().is_empty());
 
     for ins in lines.map(|line| all_consuming(parse_instruction)(line).finish().unwrap().1) {
-        println!("{ins:?}");
         piles.apply(ins);
-        println!("{piles:?}");
     }
 
     println!(
-        "resposta = {}",
+        "answer = {}",
         piles.0.iter().map(|pile| pile.last().unwrap()).join("")
     );
 }
